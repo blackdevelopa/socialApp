@@ -1,97 +1,69 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
-import { Foundation, AntDesign} from '@expo/vector-icons';
+import HomeScreen from './screens/HomeScreen';
+import SearchScreen from './screens/SearchScreen';
+import ProfileScreen from './screens/ProfileScreen';
+import UploadScreen from './screens/UploadScreen';
+import { createAppContainer, createBottomTabNavigator } from 'react-navigation';
+import {Ionicons, AntDesign, MaterialIcons} from '@expo/vector-icons';
 
-
-class HomeScreen extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <View style={styles.header}>
-          <View>
-            <Text>Top Followers</Text>
-          </View>
-        </View>
-        <View>
-          <AntDesign name="search1"/>
-        </View>
-      </View>
-    );
-  }
-}
-
-class SearchScreen extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Settings!</Text>
-      </View>
-    );
-  }
-}
-
-class PictureScreen extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Settings!</Text>
-      </View>
-    );
-  }
+export function App() {
+  return (
+    <View>
+      <HomeScreen />
+      <SearchScreen />
+      <ProfileScreen />
+      <UploadScreen />
+    </View>
+  )
 }
 
 const TabNavigator = createBottomTabNavigator({
-  Home:{
-  screen: HomeScreen,
-    navigationOptions:{ 
-      tabBarOptions:{
-        showLabel : false,
-        }, 
-      tabBarIcon:({focused})=>(
-        <View>
-          <Foundation name="home" color={'black'} size={30}/>
-        </View> 
-      )  
-  }  },
+  Home: {
+    screen: HomeScreen,
+    navigationOptions: {
+      tabBarOptions: {
+        showLabel: false
+      },
+      tabBarIcon:({focused})=> (
+        <Ionicons name="md-home" size={25} />
+      )
+    }
+  },
   Search: {
     screen: SearchScreen,
-      navigationOptions:{ 
-        tabBarOptions:{
-          style: {
-            backgroundColor: 'red'
-          },
-          showLabel : false,
-          },
-        tabBarIcon:({focused})=>(
-          <View>
-            <AntDesign name="search1" color={'black'} size={30}/>
-          </View> 
-        ),  
-    },  
+    navigationOptions: {
+      tabBarOptions: {
+        showLabel: false
+      },
+      tabBarIcon:({focused})=> (
+        <Ionicons name="ios-search" size={25} />
+      )
+    }
   },
-  Picture: {
-    screen: PictureScreen,
-      navigationOptions:{ 
-        tabBarOptions:{
-          showLabel : false,
-          },
-        tabBarIcon:({focused})=>(
-          <View>
-            <AntDesign name="picture" color={'black'} size={30}/>
-          </View> 
-        ),  
-    },  
+  Upload: {
+    screen: UploadScreen,
+    navigationOptions: {
+      tabBarOptions: {
+        showLabel: false
+      },
+      tabBarIcon:({focused})=> (
+        <AntDesign name="upload" size={25} />
+      )
+    }
   },
-});
+  Profile: {
+    screen: ProfileScreen,
+    navigationOptions: {
+      tabBarOptions: {
+        showLabel: false
+      },
+      tabBarIcon:({focused})=> (
+        <MaterialIcons name="account-circle" size={25} />
+      )
+    }
+  }
+}, {
+  initialRouteName: 'Profile'
+})
 
 export default createAppContainer(TabNavigator);
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
