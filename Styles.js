@@ -38,12 +38,12 @@ export default StyleSheet.create({
     borderWidth: 1,
     // borderColor: 'grey',
     // shadowColor: 'green',
-    shadowOpacity: 1,
-    shadowRadius: 4,
-    shadowOffset: {
-      height: 0,
-      width: 2
-    }
+    // shadowOpacity: 1,
+    // shadowRadius: 4,
+    // shadowOffset: {
+    //   height: 0,
+    //   width: 2
+    // }
   },
   touchImg: {
     height: 60,
